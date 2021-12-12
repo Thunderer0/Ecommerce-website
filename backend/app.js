@@ -1,12 +1,18 @@
-const express = require('express')
+const express = require('express');
 const app = express();
-app.use(express.json())
+const errorMidddleware = require('./middleware/error')
+// parsing object to json
+app.use(express.json());
 
 
-// route import
-const product = require("./routes/productRoute")
-app.use("/api/v1",product)
+// import route from productroute
+const product = require("./routes/productRoute");
+// it will give route to product crud operations
+app.use("/api/v1",product);
+
+// middleware for error
+app.use(errorMidddleware);
 
 
-
+// export app routes to server
 module.exports = app
