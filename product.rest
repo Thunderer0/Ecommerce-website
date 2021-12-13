@@ -6,8 +6,8 @@ POST http://localhost:8080/api/v1/product/new
 Content-Type: application/json
 
 {
-    "name":"product1",
-    "price":"1200",
+    "name":"product7",
+    "price":"1700",
     "description":" this is a sample product",
     "category": "laptop",
     "images":{
@@ -35,4 +35,8 @@ DELETE  http://localhost:8080/api/v1/product/61b4c72b5577ed0fdb5ca3ee
 # delete product --admin
 ###
 GET   http://localhost:8080/api/v1/product/61b4cff6102477046e5f77ac
-# get single product 
+# get single product
+###
+GET http://localhost:8080/api/v1/products?keyword=product1&price[gt]=200&price[lt]=1500
+###
+GET http://localhost:8080/api/v1/products?page=2
