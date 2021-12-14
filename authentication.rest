@@ -1,0 +1,24 @@
+GET http://localhost:8080/api/v1/user
+###
+POST http://localhost:8080/api/v1/register
+# create product --admin
+Content-Type: application/json
+
+{
+    "name":"paril",
+    "email": "parilhv@gmail.com",
+    "password": "Sanghvi@4",
+    "avatar":{
+        "public_id":"sample image",
+        "url":"sample url"
+    }
+}
+###
+POST http://localhost:8080/api/v1/login
+# login
+Content-Type: application/json
+
+{
+    "email": "paril@gmail.com",
+    "password": "Sanghvi@4"
+}

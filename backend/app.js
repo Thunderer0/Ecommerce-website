@@ -7,8 +7,10 @@ app.use(express.json());
 
 // import route from productroute
 const product = require("./routes/productRoute");
+const user = require("./routes/userRoute")
 // it will give route to product crud operations
 app.use("/api/v1",product);
+app.use("/api/v1",user)
 
 // middleware for error
 app.use(errorMidddleware);
