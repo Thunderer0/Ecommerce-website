@@ -10,6 +10,7 @@ const Apifeatures = require("../utlis/apifeatures");
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     // takes json as input and adds to database according to schema
     // Product.create/find are operations on database with help of mongoose.export taken in Product
+    req.body.user= req.user.id;
     const product = await Product.create(req.body);
     // returns status with success and added object in json
     res.status(201).json({

@@ -17,6 +17,6 @@ const {
 // requests crud operation with the link 
 router.route("/products").get(getAllProducts);
 router.route("/product/new").post(isAuthenticatedUser, authorizedRoles("admin"), createProduct);
-router.route("/product/:id").put(isAuthenticatedUser, updateProduct).delete(isAuthenticatedUser, deleteProduct).get(getProductDetails);
+router.route("/product/:id").put(isAuthenticatedUser, authorizedRoles("admin"), updateProduct).delete(isAuthenticatedUser, authorizedRoles("admin"), deleteProduct).get(getProductDetails);
 // exports routes to app
-module.exports = router
+module.exports = router;

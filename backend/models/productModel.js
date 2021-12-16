@@ -70,6 +70,11 @@ const productSchema = mongoose.Schema({
             required: true
         }
     }],
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:"user",
+        required: true,
+    },
     createdAt: { 
         type: Date,
         // takes date from system

@@ -2,6 +2,7 @@ const ErrorHandler = require("../utlis/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
 const sendToken = require("../utlis/jwtToken");
+const sendEmail = require("../utlis/sendEmail")
 
 // register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -43,14 +44,48 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     }
     sendToken(user, 200, res)
 })
-    // logout user
-exports.logout=catchAsyncErrors(async (req,res,next)=>{
-    res.cookie("token",null,{
+// logout user
+exports.logout = catchAsyncErrors(async (req, res, next) => {
+    res.cookie("token", null, {
         expires: new Date(Date.now),
-        httpOnly:true
+        httpOnly: true
     })
     res.status(200).json({
-        success:true,
-        message:"user logged out"
+        success: true,
+        message: "user logged out"
     })
+})
+// forgot password
+exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findOne({
+        email: req.body.email,
+    })
+    if (!user) {
+        return next(new ErrorHandler("user not found", 404))
+    }
+    // get resetPassword Token
+    const resetToken = await user.getResetPasswordToken();
+    await user.save({
+        validateBeforeSave: false
+    });
+    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`
+    const message = `ypur password reset token is :- \n\n ${resetPasswordUrl} \n\n if you have not requested this email then please ignore it`;
+    try {
+        await sendEmail({
+            email: user.email,
+            subject: `Ecommerce Password recovery`,
+            message,
+        })
+        res.status(200).json({
+            success: true,
+            message: `email sent to ${user.email} successfully`,
+        })
+    } catch (error) {
+        user.resetPasswordToken = undefined
+        user.resetPasswordExpire = undefined
+        await user.save({
+            validateBeforeSave: false
+        });
+        return next(new ErrorHandler(error.message, 500))
+    }
 })
