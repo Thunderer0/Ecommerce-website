@@ -1,7 +1,7 @@
 GET http://localhost:8080/api/v1/products
 # get all products
 ###
-POST http://localhost:8080/api/v1/product/new
+POST http://localhost:8080/api/v1/admin/product/new
 # create product --admin
 Content-Type: application/json
 
@@ -16,7 +16,7 @@ Content-Type: application/json
     }
 }
 ###
-PUT http://localhost:8080/api/v1/product/61b4cff6102477046e5f77ac
+PUT http://localhost:8080/api/v1/admin/product/61b4cff6102477046e5f77ac
 # update product --admin
 Content-Type: application/json
 
@@ -31,7 +31,7 @@ Content-Type: application/json
     }
 }
 ###
-DELETE  http://localhost:8080/api/v1/product/61b4c72b5577ed0fdb5ca3ee
+DELETE  http://localhost:8080/api/v1/admin/product/61b4c72b5577ed0fdb5ca3ee
 # delete product --admin
 ###
 GET   http://localhost:8080/api/v1/product/61b4cff6102477046e5f77ac
