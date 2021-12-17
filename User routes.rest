@@ -1,0 +1,40 @@
+#get all user
+GET   http://localhost:8080/api/v1/admin/users
+###
+#get single user
+GET   http://localhost:8080/api/v1/admin/users/61b74a9ce9783162029e8814
+###
+#update user
+PUT  http://localhost:8080/api/v1/me/update
+Content-Type: application/json
+
+{
+    "email":"parilsanghvi@gmail.com",
+    "name": "Paril_Sanghvi"
+}
+###
+#get user details
+GET http://localhost:8080/api/v1/me
+###
+#delete user
+DELETE   http://localhost:8080/api/v1/admin/users/61bce9ca5110cfecaeddac28
+###
+#change user role
+PUT    http://localhost:8080/api/v1/admin/users/61bce9ca5110cfecaeddac28
+Content-Type: application/json
+
+{
+    "email":"parilsanghvi0510@gmail.com",
+    "name": "paril",
+    "role": "admin"
+}
+###
+#change password
+PUT  http://localhost:8080/api/v1/password/update
+Content-Type: application/json
+
+{
+    "oldPassword": "00000000",
+    "newPassword": "Sanghvi@4",
+    "confirmPassword":"Sanghvi@4"
+}

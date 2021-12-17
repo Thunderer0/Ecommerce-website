@@ -40,3 +40,18 @@ GET   http://localhost:8080/api/v1/product/61b4cff6102477046e5f77ac
 GET http://localhost:8080/api/v1/products?keyword=product1&price[gt]=200&price[lt]=1500
 ###
 GET http://localhost:8080/api/v1/products?page=2
+###
+PUT  http://localhost:8080/api/v1/review
+Content-Type: application/json
+
+ {
+     "productId": "61b4cff6102477046e5f77ac",
+     "comment": "most amazing website",
+     "rating": "3"
+ }
+###
+#get reviews
+GET  http://localhost:8080/api/v1/reviews?id=61b4cff6102477046e5f77ac
+###
+#delete reviews
+DELETE  http://localhost:8080/api/v1/reviews?id=61bd0557cdc4b59cfe8fa6fa&productId=61b4cff6102477046e5f77ac

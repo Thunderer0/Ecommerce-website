@@ -1,9 +1,9 @@
-POST http://localhost:8080/api/v1/register
 # create user
+POST http://localhost:8080/api/v1/register
 Content-Type: application/json
 
 {
-    "name":"paril",
+    "name":"parilsanghvi",
     "email": "parilsanghvi0510@gmail.com",
     "password": "Sanghvi@4",
     "avatar":{
@@ -12,8 +12,8 @@ Content-Type: application/json
     }
 }
 ###
-POST http://localhost:8080/api/v1/login
 # login
+POST http://localhost:8080/api/v1/login
 Content-Type: application/json
 
 {
@@ -21,17 +21,10 @@ Content-Type: application/json
     "password": "Sanghvi@4"
 }
 ###
-POST http://localhost:8080/api/v1/login
-# login
-Content-Type: application/json
-
-{
-    "email": "parilsanghvi0510@gmail.com",
-    "password": "Sanghvi@4"
-}
-###
+#logout user
 GET http://localhost:8080/api/v1/logout
 ###
+#forgot password
 POST  http://localhost:8080/api/v1/password/forgot
 Content-Type: application/json
 
@@ -39,49 +32,11 @@ Content-Type: application/json
     "email": "parilsanghvi@gmail.com"
 }
 ###
+#reset password
 PUT  http://localhost:8080/api/v1/password/reset/b328357309318b178e48dc744c021ab7f2aa24d4
 Content-Type: application/json
 
 {
     "password": "00000000",
     "confirmPassword": "00000000"
-}
-###
-GET http://localhost:8080/api/v1/me
-###
-#change password
-PUT  http://localhost:8080/api/v1/password/update
-Content-Type: application/json
-
-{
-    "oldPassword": "00000000",
-    "newPassword": "Sanghvi@4",
-    "confirmPassword":"Sanghvi@4"
-}
-###
-#update user
-PUT  http://localhost:8080/api/v1/me/update
-Content-Type: application/json
-
-{
-    "email":"parilsanghvi@gmail.com",
-    "name": "Paril_Sanghvi"
-}
-###
-GET   http://localhost:8080/api/v1/admin/users
-###
-#get single user
-GET   http://localhost:8080/api/v1/admin/users/61b74a9ce9783162029e8814
-###
-#delete user
-DELETE   http://localhost:8080/api/v1/admin/users/61bce9ca5110cfecaeddac28
-###
-#delete user
-PUT    http://localhost:8080/api/v1/admin/users/61bce9ca5110cfecaeddac28
-Content-Type: application/json
-
-{
-    "email":"parilsanghvi0510@gmail.com",
-    "name": "paril",
-    "role": "admin"
 }
