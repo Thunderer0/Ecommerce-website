@@ -25,17 +25,23 @@ Content-Type: application/json
     "price":"1500",
     "description":" this is a sample product",
     "category": "laptop",
-    "images":{
+    "images":[
+        {
         "public_id":"sample image",
-        "url":"sample url"
-    }
+        "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZx3nN0q0SKqrFVUwLzJfb4pGdY51COMcQbw&usqp=CAU"
+        },
+        {
+        "public_id":"sample image",
+        "url":"https://images.hindustantimes.com/auto/img/2021/02/05/600x338/apple_icar_youtube_1612505634970_1612505641070.jpg"
+        }
+    ]
 }
 ###
 DELETE  http://localhost:8080/api/v1/admin/product/61b4c72b5577ed0fdb5ca3ee
 # delete product --admin
 ###
-GET   http://localhost:8080/api/v1/product/61b4cff6102477046e5f77ac
 # get single product
+GET   http://localhost:8080/api/v1/product/61b4d260b5586bd8a1315b01
 ###
 GET http://localhost:8080/api/v1/products?keyword=product1&price[gt]=200&price[lt]=1500
 ###

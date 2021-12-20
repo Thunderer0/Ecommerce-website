@@ -20,9 +20,9 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 })
 
 // get all products
-exports.getAllProducts = catchAsyncErrors(async (req, res) => {
+exports.getAllProducts = catchAsyncErrors(async (req, res,next) => {
     const resultPerPage = 8;
-    const productCount = await Product.countDocuments();
+    const productsCount = await Product.countDocuments();
 
     const apifeature = new Apifeatures(Product.find(), req.query)
         .search()
@@ -33,7 +33,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
     res.status(200).json({
         success: true,
         products,
-        productCount
+        productsCount
     })
 })
 // update product --admin
@@ -49,7 +49,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     })
     res.status(200).json({
         success: true,
-        product
+        product,
     })
 })
 // delete product --admin
@@ -74,7 +74,7 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
     }
     res.status(200).json({
         success: true,
-        product
+        product,
     })
 })
 // create new review or update review
