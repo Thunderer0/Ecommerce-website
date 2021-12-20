@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./component/layout/Header/Header.js"
 import Footer from "./component/layout/Footer/Footer.js"
 // import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import WebFont from 'webfontloader';
 import React from 'react';
 import Home from "./component/Home/Home.js"
@@ -17,13 +17,11 @@ function App() {
     })
   },[])
   return (
-    <BrowserRouter>
+    <Router>
     <Header />
-    <Routes >
-    <Route path="/" element={<Home/>} />
-    </Routes>
+    <Route exact path="/" component={Home} />
     <Footer/>
-    </BrowserRouter>
+    </Router>
 
   );
 }
