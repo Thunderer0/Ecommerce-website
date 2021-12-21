@@ -2,17 +2,26 @@ import React, { Fragment , useEffect} from 'react'
 import Carousel from "react-material-ui-carousel"
 import "./ProductDetails.css"
 import {useDispatch,useSelector} from "react-redux"
-import { getProductDetails } from '../../actions/productAction'
+import { clearErrors, getProductDetails } from '../../actions/productAction'
 import ReactStars from 'react-rating-stars-component'
-
-
-
+import ReviewCard from "./ReviewCard.js"
+import Loader from "../layout/loader/Loader"
+import {useAlert} from "react-alert"
 export const ProductDetails = ({match}) => {
+
     const dispatch = useDispatch();
+
     const {product,loading,error} = useSelector((state)=>state.productDetails)
+
+    const alert =useAlert()
+
     useEffect(() => {
-        dispatch(getProductDetails(match.params.id))
-    }, [dispatch,match.params.id])
+      if (error) {
+        alert.error(error);
+        dispatch(clearErrors());
+      }
+      dispatch(getProductDetails(match.params.id))
+    }, [dispatch,match.params.id,error,alert])
 
     const options = {
         edit : false,
@@ -25,6 +34,7 @@ export const ProductDetails = ({match}) => {
 
     return (
         <Fragment>
+          {loading? <Loader/>:(<Fragment>
             <div className="ProductDetails">
             <div>
               <Carousel>
@@ -57,20 +67,19 @@ export const ProductDetails = ({match}) => {
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button>-</button>
-                    <input readOnly type="number"  />
+                    <input readOnly value="1" type="number"  />
                     <button>+</button>
                   </div>
                   <button
-                    disabled={product.Stock < 1 ? true : false}
+                    disabled={product.stock < 1 ? true : false}
                   >
                     Add to Cart
                   </button>
-                </div>
-
+                </div>{" "}
                 <p>
-                  Status:
-                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                  Status: {" "}
+                  <b className={product.stock < 1 ? "redColor" : "greenColor"}>
+                    {product.stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
                 </p>
               </div>
@@ -86,9 +95,17 @@ export const ProductDetails = ({match}) => {
           </div>
 
 
-          <h3 className='reviewHeading'>REVIEWS</h3>
+          <h3 className='reviewsHeading'>REVIEWS</h3>
+          {product.reviews&&
+          product.reviews[0]?(<div className='reviews'>
+            {product.reviews&&product.reviews.map((review)=><ReviewCard review={review}/>)}
+          </div>)
+          :(
+            <p className='noReviews'>No Reviews Yet</p>
+          )}
+        </Fragment>)}
         </Fragment>
-    );
+  );
 }
 
 export default ProductDetails
