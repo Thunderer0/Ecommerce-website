@@ -24,10 +24,12 @@ const Products = ({match}) => {
     const dispatch = useDispatch()
     const {products,loading,error,productsCount,resultPerPage,filteredProductsCount} = useSelector(state=>state.products)
     const keyword = match.params.keyword;
- 
+
+    const[ratings,setRating]=useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [price, setPrice] = useState([0,25000])
     const [category,setCategory] = useState("")
+
     const setCurrentPageNo = (e)=>{
         setCurrentPage(e)
     }
@@ -35,8 +37,8 @@ const Products = ({match}) => {
         setPrice(newPrice);
     }
     useEffect(() => {
-        dispatch(getProduct(keyword,currentPage,price,category))
-    }, [dispatch,keyword,currentPage,price,category])
+        dispatch(getProduct(keyword,currentPage,price,category,ratings))
+    }, [dispatch,keyword,currentPage,price,category,ratings])
     let count = filteredProductsCount
     return (
        <Fragment>
@@ -62,6 +64,7 @@ const Products = ({match}) => {
                     />
                     <Typography>
                         Categories
+                    </Typography>
                         <ul className='category-box'>
                             {categories.map((category)=>(
                                 <li className='category-link'
@@ -71,7 +74,22 @@ const Products = ({match}) => {
                                 </li>
                             ))}
                         </ul>
-                    </Typography>
+                        <fieldset>
+                            <Typography component="legend">
+                                Ratings
+                                </Typography>
+                                <Slider
+                                value={ratings}
+                                onChange={(e,newRating)=>{
+                                    setRating(newRating)
+                                }}
+                                aria-labelledby="continous-slider"
+                                min={0}
+                                max={5}
+                                valueLabelDisplay='auto'
+                                />
+
+                        </fieldset>
                 </div>
 
 
