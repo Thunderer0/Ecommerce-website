@@ -6,13 +6,13 @@ POST http://localhost:8080/api/v1/admin/product/new
 Content-Type: application/json
 
 {
-    "name":"product7",
+    "name":"product8",
     "price":"1700",
     "description":" this is a sample product",
     "category": "laptop",
     "images":{
         "public_id":"sample image",
-        "url":"sample url"
+        "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZx3nN0q0SKqrFVUwLzJfb4pGdY51COMcQbw&usqp=CAU"
     }
 }
 ###
