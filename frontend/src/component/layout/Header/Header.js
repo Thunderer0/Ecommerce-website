@@ -9,7 +9,7 @@ const options ={
     logHoverSize : "10px",
     logHoverColor : "#eb4034",
     link1Text : "Home",
-    link2Text : "Product",
+    link2Text : "Products",
     link3Text : "Contact",
     link4Text : "About",
     link1Url : "/",
