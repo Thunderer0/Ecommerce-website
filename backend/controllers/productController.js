@@ -28,13 +28,14 @@ exports.getAllProducts = catchAsyncErrors(async (req, res,next) => {
         .search()
         .filter()
         .pagiNation(resultPerPage)
-    // find function gets all the objects of the collection returns empty object if none is found
-    const products = await apifeature.query;
+        const products = await apifeature.query;
+        let filteredProductsCount = products.length;
     res.status(200).json({
         success: true,
         products,
         productsCount,
         resultPerPage,
+        filteredProductsCount
     })
 })
 // update product --admin
