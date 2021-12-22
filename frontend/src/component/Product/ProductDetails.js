@@ -3,10 +3,11 @@ import Carousel from "react-material-ui-carousel"
 import "./ProductDetails.css"
 import {useDispatch,useSelector} from "react-redux"
 import { clearErrors, getProductDetails } from '../../actions/productAction'
-import ReactStars from 'react-rating-stars-component'
+import { Rating } from "@material-ui/lab";
 import ReviewCard from "./ReviewCard.js"
 import Loader from "../layout/loader/Loader"
 import {useAlert} from "react-alert"
+import MetaData from "../layout/MetaData";
 export const ProductDetails = ({match}) => {
 
     const dispatch = useDispatch();
@@ -24,17 +25,18 @@ export const ProductDetails = ({match}) => {
     }, [dispatch,match.params.id,error,alert])
 
     const options = {
-        edit : false,
-        color: "rgba(20,20,20,0.1)",
-        activeColor: "tomato",
-        size: window.innerWidth < 600? 20:25,
-        value: product.ratings,
-        isHalf:true,
+      size: "large",
+      value: product.ratings,
+      readOnly: true,
+      precision: 0.5,
     }
 
     return (
         <Fragment>
-          {loading? <Loader/>:(<Fragment>
+          {loading?(<Loader/>
+          ):(
+          <Fragment>
+            <MetaData title={`${product.name} -- ECOMMERCE`} />
             <div className="ProductDetails">
             <div>
               <Carousel>
@@ -56,7 +58,7 @@ export const ProductDetails = ({match}) => {
                 <p>Product # {product._id}</p>
               </div>
               <div className="detailsBlock-2">
-                <ReactStars {...options} />
+                <Rating {...options} />
                 <span className="detailsBlock-2-span">
                   {" "}
                   ({product.numOfReviews} Reviews)
