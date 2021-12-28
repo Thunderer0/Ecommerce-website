@@ -8,11 +8,11 @@ const cloudinary = require("cloudinary")
 
 // register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
-        width:150,
-        crop:"scale",
-    }) 
+        width: 150,
+        crop: "scale",
+    })
 
     const {
         name,
@@ -24,7 +24,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         email,
         password,
         avatar: {
-            public_id:myCloud.public_id,
+            public_id: myCloud.public_id,
             url: myCloud.secure_url,
         }
     });
@@ -149,6 +149,21 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     }
     // add email change verification
     // we will add cloud avatar later
+    if (req.body.avatar !== "") {
+        const user = await User.findById(req.user.id)
+        const imageId = user.avatar.public_id
+        await cloudinary.v2.uploader.destroy(imageId);
+        const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: "avatars",
+            width: 150,
+            crop: "scale",
+        })
+
+        newUserData.avatar = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+        }
+    }
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
         new: true,
         runValidators: true,
@@ -203,6 +218,6 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     await user.remove();
     res.status(200).json({
         success: true,
-        message:"user deleted successfully"
+        message: "user deleted successfully"
     })
 })
