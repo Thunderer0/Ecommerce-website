@@ -147,8 +147,6 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
     }
-    // add email change verification
-    // we will add cloud avatar later
     if (req.body.avatar !== "") {
         const user = await User.findById(req.user.id)
         const imageId = user.avatar.public_id
