@@ -11,7 +11,7 @@ import LockIcon from  "@material-ui/icons/Lock"
 import VpnKeyIcon from "@material-ui/icons/VpnKey"
 
 const UpdatePassword = ({history}) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const alert = useAlert();
 
 
