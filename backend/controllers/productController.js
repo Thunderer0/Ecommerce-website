@@ -3,14 +3,30 @@ const Product = require("../models/productModel");
 const ErrorHandler = require("../utlis/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Apifeatures = require("../utlis/apifeatures");
-
+const cloudinary= require("cloudinary")
 
 // create product --admin
 // exports.(function_name) = rest of function {way to export functions ;) }
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     // takes json as input and adds to database according to schema
     // Product.create/find are operations on database with help of mongoose.export taken in Product
+    let images = []
+    if (typeof req.body.images==="string") {
+        images.push(req.body.images)
+    }else{
+        images = req.body.images 
+    }
+    const imagesLink = []
+    for (let i = 0; i < images.length; i++) {
+        const result = await cloudinary.v2.uploader.upload(images[i],{folder:"products"
+    })
+       imagesLink.push({
+           public_id: result.public_id,
+           url:result.secure_url
+       })
+    }
     req.body.user = req.user.id;
+    req.body.images=imagesLink;
     const product = await Product.create(req.body);
     // returns status with success and added object in json
     res.status(201).json({
@@ -38,6 +54,13 @@ exports.getAllProducts = catchAsyncErrors(async (req, res,next) => {
         filteredProductsCount
     })
 })
+exports.getAdminProducts = catchAsyncErrors(async (req, res,next) => {
+    const products = await Product.find()
+    res.status(200).json({
+        success: true,
+        products, 
+    })
+})
 // update product --admin
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     // takes json and product id as input finds object by that id if such object exists it again finds by id and updates it and returns success with modified object
@@ -60,6 +83,9 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     const product = await Product.findById(req.params.id)
     if (!product) {
         return next(new ErrorHandler("product not found", 404))
+    }
+    for (let i = 0; i < product.images.length; i++) {
+        await cloudinary.v2.uploader.destroy(product.images[i].public_id);
     }
     await product.remove();
     res.status(200).json({

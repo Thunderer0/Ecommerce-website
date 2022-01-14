@@ -5,12 +5,14 @@ import DashBoardIcon from "@material-ui/icons/Dashboard"
 import PersonIcon from "@material-ui/icons/Person"
 import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 import ListAltIcon from "@material-ui/icons/ListAlt"
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
 import {useHistory} from "react-router-dom"
 import { useAlert } from 'react-alert'
 import { logout } from '../../../actions/userAction'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector} from 'react-redux'
 import Backdrop from "@material-ui/core/Backdrop"
 const UserOptions = ({user}) => {
+    const {cartItems}= useSelector((state)=>state.cart)
     const dispatch = useDispatch()
     const [ open,setOpen] = useState(false)
     const history = useHistory()
@@ -18,6 +20,7 @@ const UserOptions = ({user}) => {
     const options =[
         {icon:<PersonIcon/>, name:"Profile",func:account},
         {icon:<ListAltIcon/>, name:"Orders",func:orders},
+        {icon:<ShoppingCartIcon style={{color:cartItems.length>0?"tomato":"unset"}}/>, name:`Cart(${cartItems.length})`,func:cart},
         {icon:<ExitToAppIcon/>, name:"LogOut",func:logoutuser},
     ]
     if (user.role==="admin") {
@@ -28,6 +31,9 @@ const UserOptions = ({user}) => {
     }
     function account() {
         history.push("/account")
+    }
+    function cart() {
+        history.push("/Cart")
     }
     function orders() {
         history.push('/orders')
@@ -60,7 +66,9 @@ const UserOptions = ({user}) => {
                     key={item.name} 
                     icon={item.icon} 
                     tooltipTitle={item.name} 
-                    onClick={item.func} />
+                    onClick={item.func}
+                    tooltipOpen={window.innerWidth<=600?true:false}
+                    />
                 ))}
             </SpeedDial>
         </Fragment>
