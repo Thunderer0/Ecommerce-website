@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
-import Loader from "../layout/Loader/Loader";
+// import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
@@ -101,9 +101,9 @@ const LoginSignUp = ({ history, location }) => {
 
   return (
     <Fragment>
-      {loading ? (
+      {/* {loading ? (
         <Loader />
-      ) : (
+      ) : ( */}
         <Fragment>
           <div className="LoginSignUpContainer">
             <div className="LoginSignUpBox">
@@ -192,7 +192,8 @@ const LoginSignUp = ({ history, location }) => {
             </div>
           </div>
         </Fragment>
-      )}
+      )
+      {/* } */}
     </Fragment>
   );
 };
