@@ -8,7 +8,7 @@ import {
   newReview,
 } from "../../actions/productAction";
 import ReviewCard from "./ReviewCard.js";
-import Loader from "../layout/Loader/Loader";
+// import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";
@@ -101,9 +101,9 @@ const ProductDetails = ({ match }) => {
 
   return (
     <Fragment>
-      {loading ? (
+      {/* {loading ? (
         <Loader />
-      ) : (
+      ) : ( */}
         <Fragment>
           <MetaData title={`${product.name} -- ECOMMERCE`} />
           <div className="ProductDetails">
@@ -211,7 +211,8 @@ const ProductDetails = ({ match }) => {
             <p className="noReviews">No Reviews Yet</p>
           )}
         </Fragment>
-      )}
+      )
+      {/* } */}
     </Fragment>
   );
 };
