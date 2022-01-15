@@ -29,6 +29,7 @@ const ProductList = ({ history }) => {
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
+    alert.success("Product Deleted Successfully");
   };
 
   useEffect(() => {

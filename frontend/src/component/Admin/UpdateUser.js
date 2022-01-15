@@ -68,6 +68,8 @@ const UpdateUser = ({ history, match }) => {
     myForm.set("role", role);
 
     dispatch(updateUser(userId, myForm));
+    alert.success("User Updated Successfully");
+      history.push("/admin/users");
   };
 
   return (

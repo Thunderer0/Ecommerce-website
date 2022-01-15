@@ -65,6 +65,8 @@ const NewProduct = ({ history }) => {
       myForm.append("images", image);
     });
     dispatch(createProduct(myForm));
+    history.push("/admin/dashboard");
+    alert.success("Product Created Successfully");
   };
 
   const createProductImagesChange = (e) => {

@@ -60,7 +60,7 @@ export const productsReducer = (state = { products: [] }, action) => {
     case ADMIN_PRODUCT_FAIL:
       return {
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
@@ -90,7 +90,7 @@ export const newProductReducer = (state = { product: {} }, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
     case NEW_PRODUCT_RESET:
       return {
@@ -133,7 +133,7 @@ export const productReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
     case DELETE_PRODUCT_RESET:
       return {
@@ -170,7 +170,7 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
     case PRODUCT_DETAILS_FAIL:
       return {
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
@@ -199,7 +199,7 @@ export const newReviewReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
     case NEW_REVIEW_RESET:
       return {
@@ -232,7 +232,7 @@ export const productReviewsReducer = (state = { reviews: [] }, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
@@ -262,7 +262,7 @@ export const reviewReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
     case DELETE_REVIEW_RESET:
       return {

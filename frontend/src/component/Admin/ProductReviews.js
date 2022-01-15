@@ -33,6 +33,7 @@ const ProductReviews = ({ history }) => {
 
   const deleteReviewHandler = (reviewId) => {
     dispatch(deleteReviews(reviewId, productId));
+    alert.success("Review Deleted Successfully");
   };
 
   const productReviewsSubmitHandler = (e) => {

@@ -101,6 +101,8 @@ const UpdateProduct = ({ history, match }) => {
       myForm.append("images", image);
     });
     dispatch(updateProduct(productId, myForm));
+    history.push("/admin/products");
+    alert.success("Product Updated Successfully");
   };
 
   const updateProductImagesChange = (e) => {

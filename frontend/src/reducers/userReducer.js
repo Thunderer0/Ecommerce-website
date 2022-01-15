@@ -88,7 +88,7 @@ export const userReducer = (state = { user: {} }, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
@@ -192,7 +192,7 @@ export const forgotPasswordReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
@@ -224,7 +224,7 @@ export const allUsersReducer = (state = { users: [] }, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
@@ -256,7 +256,7 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case CLEAR_ERRORS:
