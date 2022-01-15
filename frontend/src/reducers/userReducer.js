@@ -136,7 +136,7 @@ export const profileReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        // error: action.payload,
       };
 
     case UPDATE_PROFILE_RESET:
