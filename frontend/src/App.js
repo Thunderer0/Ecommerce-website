@@ -9,7 +9,7 @@ import Home from "./component/Home/Home";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products";
 import Search from "./component/Product/Search";
-import LoginSignUp from "./component/User/LoginSignUp";
+import LoginSignUp from "./component/Product/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions";
