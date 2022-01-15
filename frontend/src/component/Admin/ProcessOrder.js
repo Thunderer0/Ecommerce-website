@@ -9,7 +9,7 @@ import {
   updateOrder,
 } from "../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../layout/Loader/Loader";
+// import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
@@ -58,9 +58,9 @@ const ProcessOrder = ({ history, match }) => {
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
-          {loading ? (
+          {/* {loading ? (
             <Loader />
-          ) : (
+          ) : ( */}
             <div
               className="confirmOrderPage"
               style={{
@@ -186,7 +186,8 @@ const ProcessOrder = ({ history, match }) => {
                 </form>
               </div>
             </div>
-          )}
+          )
+          {/* } */}
         </div>
       </div>
     </Fragment>
