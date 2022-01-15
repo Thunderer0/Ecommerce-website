@@ -9,8 +9,8 @@ import AlertTemplate from "react-alert-template-basic";
 
 const options = {
   timeout: 5000,
-  positions: positions.BOTTOM_CENTER,
-  transitions: transitions.SCALE,
+  position: positions.BOTTOM_CENTER,
+  transition: transitions.SCALE,
 };
 
 ReactDOM.render(

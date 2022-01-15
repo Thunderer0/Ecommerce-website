@@ -32,7 +32,7 @@ const UpdateProduct = ({ history, match }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [stock, setStock] = useState(0);
+  const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -57,7 +57,7 @@ const UpdateProduct = ({ history, match }) => {
       setDescription(product.description);
       setPrice(product.price);
       setCategory(product.category);
-      setStock(product.stock);
+      setStock(product.Stock);
       setOldImages(product.images);
     }
     if (error) {
@@ -95,7 +95,7 @@ const UpdateProduct = ({ history, match }) => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("stock", stock);
+    myForm.set("Stock", Stock);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -192,7 +192,7 @@ const UpdateProduct = ({ history, match }) => {
                 placeholder="Stock"
                 required
                 onChange={(e) => setStock(e.target.value)}
-                value={stock}
+                value={Stock}
               />
             </div>
 

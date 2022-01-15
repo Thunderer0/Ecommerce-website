@@ -43,8 +43,8 @@ const ProductList = ({ history }) => {
     }
 
     if (isDeleted) {
-      history.push("/admin/dashboard");
       alert.success("Product Deleted Successfully");
+      history.push("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
@@ -109,7 +109,7 @@ const ProductList = ({ history }) => {
     products.forEach((item) => {
       rows.push({
         id: item._id,
-        stock: item.stock,
+        stock: item.Stock,
         price: item.price,
         name: item.name,
       });
