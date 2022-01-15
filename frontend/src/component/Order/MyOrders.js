@@ -3,7 +3,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import "./myOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
-import Loader from "../layout/loader/Loader";
+import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
@@ -28,7 +28,8 @@ const MyOrders = () => {
       flex: 0.5,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor": "redColor";
+          ? "greenColor"
+          : "redColor";
       },
     },
     {

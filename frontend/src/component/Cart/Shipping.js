@@ -29,14 +29,14 @@ const Shipping = ({ history }) => {
     e.preventDefault();
 
     if (phoneNo.length < 10 || phoneNo.length > 10) {
-      alert.error("Phone Number should be 10 digits long");
+      alert.error("Phone Number should be 10 digits Long");
       return;
     }
     dispatch(
       saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
     );
     history.push("/order/confirm");
-  }; 
+  };
 
   return (
     <Fragment>

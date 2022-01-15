@@ -14,12 +14,13 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const { products } = useSelector((state) => state.products);
-// error
+
   const { orders } = useSelector((state) => state.allOrders);
-// error
+
   const { users } = useSelector((state) => state.allUsers);
-// console.log(orders.length);
+
   let outOfStock = 0;
+
   products &&
     products.forEach((item) => {
       if (item.stock === 0) {

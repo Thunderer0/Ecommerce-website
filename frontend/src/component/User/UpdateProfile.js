@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./UpdateProfile.css";
-import Loader from "../layout/loader/Loader";
+import Loader from "../layout/Loader/Loader";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +15,7 @@ const UpdateProfile = ({ history }) => {
 
   const { user } = useSelector((state) => state.user);
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
@@ -29,7 +30,7 @@ const UpdateProfile = ({ history }) => {
     myForm.set("email", email);
     myForm.set("avatar", avatar);
     dispatch(updateProfile(myForm));
-  }; 
+  };
 
   const updateProfileDataChange = (e) => {
     const reader = new FileReader();
@@ -57,14 +58,14 @@ const UpdateProfile = ({ history }) => {
     }
 
     if (isUpdated) {
-    history.push("/account");
-    alert.success("Profile Updated Successfully");
-    dispatch(loadUser());
+      alert.success("Profile Updated Successfully");
+      dispatch(loadUser());
 
+      history.push("/account");
 
-    dispatch({
-    type: UPDATE_PROFILE_RESET,
-    });
+      dispatch({
+        type: UPDATE_PROFILE_RESET,
+      });
     }
   }, [dispatch, error, alert, history, user, isUpdated]);
   return (
