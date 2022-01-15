@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./UpdateProfile.css";
-import Loader from "../layout/Loader/Loader";
+// import Loader from "../layout/Loader/Loader";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,9 +70,9 @@ const UpdateProfile = ({ history }) => {
   }, [dispatch, error, alert, history, user, isUpdated]);
   return (
     <Fragment>
-      {loading ? (
+      {/* {loading ? (
         <Loader />
-      ) : (
+      ) : ( */}
         <Fragment>
           <MetaData title="Update Profile" />
           <div className="updateProfileContainer">
@@ -125,7 +125,8 @@ const UpdateProfile = ({ history }) => {
             </div>
           </div>
         </Fragment>
-      )}
+      )
+      {/* } */}
     </Fragment>
   );
 };
