@@ -13,7 +13,7 @@ import {
   updateUser,
   clearErrors,
 } from "../../actions/userAction";
-import Loader from "../layout/Loader/Loader";
+// import Loader from "../layout/Loader/Loader";
 
 const UpdateUser = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -76,9 +76,9 @@ const UpdateUser = ({ history, match }) => {
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
-          {loading ? (
+          {/* {loading ? (
             <Loader />
-          ) : (
+          ) : ( */}
             <form
               className="createProductForm"
               onSubmit={updateUserSubmitHandler}
@@ -125,7 +125,8 @@ const UpdateUser = ({ history, match }) => {
                 Update
               </Button>
             </form>
-          )}
+          )
+          {/* } */}
         </div>
       </div>
     </Fragment>
