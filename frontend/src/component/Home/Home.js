@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard.js";
 import MetaData from "../layout/MetaData";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../layout/Loader/Loader";
+// import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 
 const Home = () => {
@@ -23,9 +23,9 @@ const Home = () => {
 
   return (
     <Fragment>
-      {loading ? (
+      {/* {loading ? (
         <Loader />
-      ) : (
+      ) : ( */}
         <Fragment>
           <MetaData title="ECOMMERCE" />
 
@@ -49,7 +49,8 @@ const Home = () => {
               ))}
           </div>
         </Fragment>
-      )}
+      )
+      {/* } */}
     </Fragment>
   );
 };
