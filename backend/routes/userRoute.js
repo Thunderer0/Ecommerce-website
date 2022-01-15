@@ -41,10 +41,10 @@ router.route("/me/update").put(isAuthenticatedUser, updateProfile)
 
 router.route("/admin/users").get(isAuthenticatedUser,authorizedRoles("admin"), getAllUser)
 
-router.route("/admin/users/:id").get(isAuthenticatedUser,authorizedRoles("admin"), getSingleUser)
+router.route("/admin/user/:id").get(isAuthenticatedUser,authorizedRoles("admin"), getSingleUser)
 
-router.route("/admin/users/:id").delete(isAuthenticatedUser,authorizedRoles("admin"), deleteUser)
+router.route("/admin/user/:id").delete(isAuthenticatedUser,authorizedRoles("admin"), deleteUser)
 
-router.route("/admin/users/:id").put(isAuthenticatedUser,authorizedRoles("admin"), updateUserRole)
+router.route("/admin/user/:id").put(isAuthenticatedUser,authorizedRoles("admin"), updateUserRole)
 
 module.exports = router;
