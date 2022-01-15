@@ -1,7 +1,6 @@
 
 Hi! My name is **Paril Sanghvi**
 
-# Prerequisite
 
 # Install Dependencies
 
