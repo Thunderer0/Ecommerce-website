@@ -69,7 +69,7 @@ const UpdateUser = ({ history, match }) => {
 
     dispatch(updateUser(userId, myForm));
     alert.success("User Updated Successfully");
-      history.push("/admin/users");
+      history.push("/admin/dashboard");
   };
 
   return (
