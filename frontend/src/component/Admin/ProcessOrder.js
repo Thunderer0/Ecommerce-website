@@ -25,6 +25,7 @@ const ProcessOrder = ({ history, match }) => {
 
     const myForm = new FormData();
     alert.success("Order Updated Successfully");
+    history.push("/admin/orders")
     myForm.set("status", status);
 
     dispatch(updateOrder(match.params.id, myForm));
