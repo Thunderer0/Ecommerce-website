@@ -114,7 +114,7 @@ const Products = ({ match }) => {
               />
             </fieldset>
           </div>
-          {resultPerPage <=count && (
+          {/* {resultPerPage <=count && ( */}
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
@@ -131,7 +131,7 @@ const Products = ({ match }) => {
                 activeLinkClass="pageLinkActive"
               />
             </div>
-          )}
+          {/* )} */}
         </Fragment>
       )
       }
