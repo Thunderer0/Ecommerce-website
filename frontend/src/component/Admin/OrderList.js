@@ -28,6 +28,7 @@ const OrderList = ({ history }) => {
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
     alert.success("Order Deleted Successfully");
+    history.push("/admin/dashboard");
   };
 
   useEffect(() => {
