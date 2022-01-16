@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./ResetPassword.css";
-// import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
@@ -45,9 +45,9 @@ const ResetPassword = ({ history, match }) => {
 
   return (
     <Fragment>
-      {/* {loading ? (
+      {loading ? (
         <Loader />
-      ) : ( */}
+      ) : (
         <Fragment>
           <MetaData title="Change Password" />
           <div className="resetPasswordContainer">
@@ -88,7 +88,7 @@ const ResetPassword = ({ history, match }) => {
           </div>
         </Fragment>
       )
-      {/* } */}
+      } 
     </Fragment>
   );
 };

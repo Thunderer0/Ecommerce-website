@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./ForgotPassword.css";
-// import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
@@ -39,9 +39,9 @@ const ForgotPassword = () => {
 
   return (
     <Fragment>
-      {/* {loading ? (
+      {loading ? (
         <Loader />
-      ) : ( */}
+      ) : (
         <Fragment>
           <MetaData title="Forgot Password" />
           <div className="forgotPasswordContainer">
@@ -74,7 +74,7 @@ const ForgotPassword = () => {
           </div>
         </Fragment>
       )
-      {/* } */}
+      }
     </Fragment>
   );
 };

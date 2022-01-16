@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
-// import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 
@@ -15,9 +15,9 @@ const Profile = ({ history }) => {
   }, [history, isAuthenticated]);
   return (
     <Fragment>
-      {/* {loading ? (
+      {loading ? (
         <Loader />
-      ) : ( */}
+      ) : (
         <Fragment>
           <MetaData title={`${user.name}'s Profile`} />
           <div className="profileContainer">
@@ -48,7 +48,7 @@ const Profile = ({ history }) => {
           </div>
         </Fragment>
       )
-      {/* } */}
+      }
     </Fragment>
   );
 };

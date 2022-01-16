@@ -3,7 +3,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import "./myOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
-// import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
@@ -89,9 +89,9 @@ const MyOrders = () => {
     <Fragment>
       <MetaData title={`${user.name} - Orders`} />
 
-      {/* {loading ? (
+      {loading ? (
         <Loader />
-      ) : ( */}
+      ) : (
         <div className="myOrdersPage">
           <DataGrid
             rows={rows}
@@ -105,7 +105,7 @@ const MyOrders = () => {
           <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
         </div>
       )
-      {/* } */}
+      }
     </Fragment>
   );
 };

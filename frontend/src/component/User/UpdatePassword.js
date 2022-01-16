@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./UpdatePassword.css";
-// import Loader from "../layout/Loader/Loader";
+import Loader from "../layout/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, updatePassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
@@ -51,9 +51,9 @@ const UpdatePassword = ({ history }) => {
 
   return (
     <Fragment>
-      {/* {loading ? (
+      {loading ? (
         <Loader />
-      ) : ( */}
+      ) : (
         <Fragment>
           <MetaData title="Change Password" />
           <div className="updatePasswordContainer">
@@ -105,7 +105,7 @@ const UpdatePassword = ({ history }) => {
           </div>
         </Fragment>
       )
-      {/* } */}
+      }
     </Fragment>
   );
 };
