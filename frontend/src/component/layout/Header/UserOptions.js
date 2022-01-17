@@ -57,8 +57,9 @@ const UserOptions = ({ user }) => {
     history.push("/cart");
   }
   function logoutUser() {
+    history.push("/")
     dispatch(logout());
-    alert.success("Logout Successfully");
+    alert.success("Logged out Successfully");
   }
 
   return (
