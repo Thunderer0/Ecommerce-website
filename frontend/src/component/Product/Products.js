@@ -37,7 +37,7 @@ const Products = ({ match }) => {
     error,
     productsCount,
     resultPerPage,
-    filteredProductsCount,
+    // filteredProductsCount,
   } = useSelector((state) => state.products);
 
   const keyword = match.params.keyword;
@@ -49,7 +49,7 @@ const Products = ({ match }) => {
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
-  let count = filteredProductsCount;
+  // let count = filteredProductsCount;
 
   useEffect(() => {
     if (error) {
