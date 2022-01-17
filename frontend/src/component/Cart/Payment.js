@@ -11,7 +11,9 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-
+import {
+  removeItemsFromCart
+} from "../../actions/cartAction"
 import axios from "axios";
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
@@ -95,7 +97,10 @@ const Payment = ({ history }) => {
           };
 
           dispatch(createOrder(order));
-
+          for (let i = 0; i < order.orderItems.length; i++) {
+            let id = order.orderItems[i].product
+            dispatch(removeItemsFromCart(id))
+          }
           history.push("/success");
         } else {
           alert.error("There's some issue while processing payment ");
