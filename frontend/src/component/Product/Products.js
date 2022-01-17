@@ -88,7 +88,7 @@ const Products = ({ match }) => {
             />
 
             <Typography>Categories</Typography>
-            <ul className="categoryBox">
+            <ul className="category-Box">
               {categories.map((category) => (
                 <li
                   className="category-link"
