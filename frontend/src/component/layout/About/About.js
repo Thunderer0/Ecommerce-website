@@ -5,7 +5,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 const About = () => {
   const visitGitHub = () => {
-    window.location = "https://instagram.com/meabhisingh";
+    window.location = "https://github.com/Thunderer0";
   };
   return (
     <div className="aboutSection">
