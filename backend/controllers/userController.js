@@ -8,7 +8,14 @@ const cloudinary = require("cloudinary")
 
 // register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-    if (!req.body.avatar) {
+
+    const {
+        name,
+        email,
+        password,
+        avatar
+    } = req.body;
+    if (!avatar) {
         return next(new ErrorHandler("Please upload avatar",401))
     }
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
@@ -16,12 +23,6 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         width: 150,
         crop: "scale",
     })
-
-    const {
-        name,
-        email,
-        password
-    } = req.body;
     const user = await User.create({
         name,
         email,
@@ -188,7 +189,6 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     if ((!user)) {
         return next(new ErrorHandler(`user doesnot exist with id: ${req.params.id}`, 400))
     }
-    console.log(user);
     res.status(200).json({
         success: true,
         user
@@ -212,7 +212,6 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 })
 // delete user --admin
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
-    // remove cloudinary later
     const user = await User.findById(req.params.id);
     if (!user) {
         return next(new ErrorHandler(`user doesnot exist with id of ${req.params.id}`, 404))
