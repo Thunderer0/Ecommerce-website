@@ -9,7 +9,7 @@ const cloudinary = require("cloudinary")
 // register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     if (!req.body.avatar) {
-        return next(new ErrorHandler("Please upload avatar"))
+        return next(new ErrorHandler("Please upload avatar",401))
     }
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
