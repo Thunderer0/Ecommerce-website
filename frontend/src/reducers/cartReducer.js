@@ -5,7 +5,10 @@ import {
 } from "../constants/cartConstants";
 
 export const cartReducer = (
-  state = { cartItems: [], shippingInfo: {} },
+  state = {
+    cartItems: [],
+    shippingInfo: {}
+  },
   action
 ) => {
   switch (action.type) {
@@ -30,19 +33,19 @@ export const cartReducer = (
         };
       }
 
-    case REMOVE_CART_ITEM:
-      return {
-        ...state,
-        cartItems: state.cartItems.filter((i) => i.product !== action.payload),
-      };
+      case REMOVE_CART_ITEM:
+        return {
+          ...state,
+          cartItems: state.cartItems.filter((i) => i.product !== action.payload),
+        };
 
-    case SAVE_SHIPPING_INFO:
-      return {
-        ...state,
-        shippingInfo: action.payload,
-      };
+      case SAVE_SHIPPING_INFO:
+        return {
+          ...state,
+          shippingInfo: action.payload,
+        };
 
-    default:
-      return state;
+      default:
+        return state;
   }
 };

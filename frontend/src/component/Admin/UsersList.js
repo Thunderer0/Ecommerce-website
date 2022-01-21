@@ -27,8 +27,6 @@ const UsersList = ({ history }) => {
 
   const deleteUserHandler = (id) => {
     dispatch(deleteUser(id));
-    alert.success("user deleted");
-    history.push("/admin/dashboard");
   };
 
   useEffect(() => {

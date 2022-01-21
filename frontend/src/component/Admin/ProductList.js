@@ -29,8 +29,6 @@ const ProductList = ({ history }) => {
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
-    alert.success("Product Deleted Successfully");
-    history.push("/admin/dashboard");
   };
 
   useEffect(() => {
@@ -45,8 +43,8 @@ const ProductList = ({ history }) => {
     }
 
     if (isDeleted) {
-      alert.success("Product Deleted Successfully");
       history.push("/admin/dashboard");
+      alert.success("Product Deleted Successfully");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 

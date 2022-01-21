@@ -27,8 +27,6 @@ const OrderList = ({ history }) => {
 
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
-    // alert.success("Order Deleted Successfully");
-    history.push("/admin/dashboard");
   };
 
   useEffect(() => {
@@ -44,7 +42,7 @@ const OrderList = ({ history }) => {
 
     if (isDeleted) {
       alert.success("Order Deleted Successfully");
-      history.push("/admin/dashboard");
+      history.push("/admin/orders");
       dispatch({ type: DELETE_ORDER_RESET });
     }
 

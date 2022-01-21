@@ -24,8 +24,7 @@ const ProcessOrder = ({ history, match }) => {
     e.preventDefault();
 
     const myForm = new FormData();
-    alert.success("Order Updated Successfully");
-    history.push("/admin/orders")
+
     myForm.set("status", status);
 
     dispatch(updateOrder(match.params.id, myForm));
@@ -187,8 +186,7 @@ const ProcessOrder = ({ history, match }) => {
                 </form>
               </div>
             </div>
-          )
-          } 
+          )}
         </div>
       </div>
     </Fragment>

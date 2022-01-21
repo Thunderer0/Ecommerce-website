@@ -15,7 +15,6 @@ const UpdateProfile = ({ history }) => {
 
   const { user } = useSelector((state) => state.user);
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
@@ -125,8 +124,7 @@ const UpdateProfile = ({ history }) => {
             </div>
           </div>
         </Fragment>
-      )
-      }
+      )}
     </Fragment>
   );
 };

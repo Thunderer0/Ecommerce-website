@@ -23,7 +23,7 @@ const NewProduct = ({ history }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [stock, setStock] = useState(0);
+  const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -59,14 +59,12 @@ const NewProduct = ({ history }) => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("stock", stock);
+    myForm.set("Stock", Stock);
 
     images.forEach((image) => {
       myForm.append("images", image);
     });
     dispatch(createProduct(myForm));
-    history.push("/admin/dashboard");
-    alert.success("Product Created Successfully");
   };
 
   const createProductImagesChange = (e) => {

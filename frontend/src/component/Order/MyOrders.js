@@ -28,8 +28,7 @@ const MyOrders = () => {
       flex: 0.5,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
+          ? "greenColor": "redColor";
       },
     },
     {
@@ -104,8 +103,7 @@ const MyOrders = () => {
 
           <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
         </div>
-      )
-      }
+      )}
     </Fragment>
   );
 };

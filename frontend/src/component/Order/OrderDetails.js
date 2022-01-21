@@ -114,8 +114,7 @@ const OrderDetails = ({ match }) => {
             </div>
           </div>
         </Fragment>
-      )
-      }
+      )}
     </Fragment>
   );
 };

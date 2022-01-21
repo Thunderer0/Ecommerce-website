@@ -68,8 +68,6 @@ const UpdateUser = ({ history, match }) => {
     myForm.set("role", role);
 
     dispatch(updateUser(userId, myForm));
-    alert.success("User Updated Successfully");
-      history.push("/admin/dashboard");
   };
 
   return (
@@ -127,7 +125,7 @@ const UpdateUser = ({ history, match }) => {
                 Update
               </Button>
             </form>
-          )} 
+          )}
         </div>
       </div>
     </Fragment>
