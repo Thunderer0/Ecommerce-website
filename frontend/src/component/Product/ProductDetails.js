@@ -8,7 +8,7 @@ import {
   newReview,
 } from "../../actions/productAction";
 import ReviewCard from "./ReviewCard.js";
-import Loader from "../layout/loader/Loader";
+import Loader from "../layout/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";

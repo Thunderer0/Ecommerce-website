@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
-import Loader from "../layout/loader/Loader";
+import Loader from "../layout/Loader";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 

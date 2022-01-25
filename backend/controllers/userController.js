@@ -8,17 +8,21 @@ const cloudinary = require("cloudinary")
 
 // register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+
+    const {
+        name,
+        email,
+        password,
+        avatar
+    } = req.body;
+    if (!avatar) {
+        return next(new ErrorHandler("Please upload avatar",401))
+    }
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
         width: 150,
         crop: "scale",
     })
-
-    const {
-        name,
-        email,
-        password
-    } = req.body;
     const user = await User.create({
         name,
         email,
@@ -38,7 +42,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     } = req.body;
     // checking if user has goven password and email both
     if (!email || !password) {
-        return next(new ErrorHandler("Please enter email and password"))
+        return next(new ErrorHandler("Please enter email and password",401))
     }
     const user = await User.findOne({
         email
@@ -76,7 +80,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     await user.save({
         validateBeforeSave: false
     });
-    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
+    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`
     const message = `your password reset token is :- \n\n ${resetPasswordUrl} \n\n if you have not requested this email then please ignore it`;
     try {
         await sendEmail({
@@ -185,7 +189,6 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     if ((!user)) {
         return next(new ErrorHandler(`user doesnot exist with id: ${req.params.id}`, 400))
     }
-    console.log(user);
     res.status(200).json({
         success: true,
         user
@@ -209,7 +212,6 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 })
 // delete user --admin
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
-    // remove cloudinary later
     const user = await User.findById(req.params.id);
     if (!user) {
         return next(new ErrorHandler(`user doesnot exist with id of ${req.params.id}`, 404))

@@ -3,7 +3,7 @@ import "./ResetPassword.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import Loader from "../layout/loader/Loader";
+import Loader from "../layout/Loader";
 import MetaData from "../layout/MetaData";
 import LockOpenIcon from  "@material-ui/icons/LockOpen"
 import LockIcon from  "@material-ui/icons/Lock"

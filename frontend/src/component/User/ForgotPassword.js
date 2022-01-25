@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./ForgotPassword.css";
-import Loader from "../layout/loader/Loader";
+import Loader from "../layout/Loader";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";

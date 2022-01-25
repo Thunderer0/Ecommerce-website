@@ -33,7 +33,7 @@ const UserOptions = ({user}) => {
         history.push("/account")
     }
     function cart() {
-        history.push("/Cart")
+        history.push("/cart")
     }
     function orders() {
         history.push('/orders')
@@ -57,7 +57,7 @@ const UserOptions = ({user}) => {
             icon={
                 <img
                 className='speedDialIcon'
-                src={user.avatar.url?user.avatar.url:"./Profile.png"}
+                src={user.avatar.url}
                 alt='Profile'
                 />}
             >
