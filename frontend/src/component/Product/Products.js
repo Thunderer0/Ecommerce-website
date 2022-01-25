@@ -38,6 +38,14 @@ const Products = ({match}) => {
     const priceHandler = (event,newPrice)=>{
         setPrice(newPrice);
     }
+        if (products.length>0) {
+            // dispatch(logger(products.length))
+            for (let i = 0; i < products.length; i++) {
+                if (products[i].stock===0) {
+                    products.splice(i,1)
+                }
+            }
+        }
     useEffect(() => {
         if (error) {
             alert.error(error);

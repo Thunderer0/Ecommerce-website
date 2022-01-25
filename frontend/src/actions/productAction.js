@@ -236,3 +236,6 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };
+export const logger = (log) => async (dispatch)=>{
+  console.log(log)
+}
