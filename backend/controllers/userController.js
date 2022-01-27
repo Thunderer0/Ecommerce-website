@@ -13,9 +13,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         name,
         email,
         password,
-        avatar
     } = req.body;
-    if (!avatar) {
+    if (!req.body.avatar) {
         return next(new ErrorHandler("Please upload avatar",401))
     }
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
