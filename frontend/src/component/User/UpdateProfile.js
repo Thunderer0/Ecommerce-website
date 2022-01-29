@@ -18,7 +18,7 @@ const UpdateProfile = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState();
-  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState();
 
   const updateProfileSubmit = (e) => {
     e.preventDefault();
@@ -49,6 +49,7 @@ const UpdateProfile = ({ history }) => {
       setName(user.name);
       setEmail(user.email);
       setAvatarPreview(user.avatar.url);
+      setAvatar(user.avatar)
     }
 
     if (error) {
@@ -66,7 +67,7 @@ const UpdateProfile = ({ history }) => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, error, alert, history, user, isUpdated]);
+  }, [dispatch, error, alert, history, user, isUpdated,avatar]);
   return (
     <Fragment>
       {loading ? (

@@ -141,7 +141,7 @@ exports.updatePassoword = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("password doesnot match", 401))
     }
     user.password = req.body.newPassword
-    user.save()
+    await user.save()
     sendToken(user, 200, res)
 })
 // update user profile
@@ -150,8 +150,14 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
     }
+    if (!req.body.avatar.url) {
+        return next(new ErrorHandler("Please upload a avatar",401))
+    }
     if (req.body.avatar !== "") {
         const user = await User.findById(req.user.id)
+        if (req.body.avatar.url===user.avatar.url) {
+            return next(new ErrorHandler("Please upload a new avatar",401))
+        }
         const imageId = user.avatar.public_id
         await cloudinary.v2.uploader.destroy(imageId);
         const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
