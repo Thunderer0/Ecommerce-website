@@ -18,7 +18,6 @@ const {
 } = require("../controllers/userController")
 const {
     isAuthenticatedUser,
-    authorizeRoles,
     authorizedRoles
 } = require("../middleware/auth")
 const router = express.Router()

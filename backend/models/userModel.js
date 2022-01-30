@@ -60,9 +60,9 @@ userSchema.methods.getJWTToken = function () {
     })
     return accesstoken;
 }
-// compare Paaword
+// compare Password
 userSchema.methods.comparePassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password)
+    return bcrypt.compare(enteredPassword, this.password)
 }
 // genrating password reset password
 userSchema.methods.getResetPasswordToken = function () {
