@@ -13,10 +13,9 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         name,
         email,
         password,
-        avatar
     } = req.body;
-    if (!avatar) {
-        return next(new ErrorHandler("Please upload avatar",401))
+    if (!req.body.avatar) {
+        return next(new ErrorHandler("Please upload avatar", 401))
     }
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
@@ -42,7 +41,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     } = req.body;
     // checking if user has goven password and email both
     if (!email || !password) {
-        return next(new ErrorHandler("Please enter email and password",401))
+        return next(new ErrorHandler("Please enter email and password", 401))
     }
     const user = await User.findOne({
         email
@@ -142,7 +141,7 @@ exports.updatePassoword = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("password doesnot match", 401))
     }
     user.password = req.body.newPassword
-    user.save()
+    await user.save()
     sendToken(user, 200, res)
 })
 // update user profile
@@ -153,6 +152,9 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     }
     if (req.body.avatar !== "") {
         const user = await User.findById(req.user.id)
+        if (req.body.avatar==="undefined") {
+            return next(new ErrorHandler("Please upload a new avatar", 401))
+        }
         const imageId = user.avatar.public_id
         await cloudinary.v2.uploader.destroy(imageId);
         const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
@@ -216,8 +218,8 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     if (!user) {
         return next(new ErrorHandler(`user doesnot exist with id of ${req.params.id}`, 404))
     }
-        const imageId = user.avatar.public_id
-        await cloudinary.v2.uploader.destroy(imageId);
+    const imageId = user.avatar.public_id
+    await cloudinary.v2.uploader.destroy(imageId);
     await user.remove();
     res.status(200).json({
         success: true,

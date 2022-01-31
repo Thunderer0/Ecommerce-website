@@ -18,7 +18,7 @@ const About = () => {
           <div>
             <Avatar
               style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src="https://res.cloudinary.com/ecommerce0510/image/upload/v1642177988/avatars/271132470_506892223917314_2788328017502867722_n_eeslhn.jpg"
+              src="https://res.cloudinary.com/ecommerce0510/image/upload/v1643263274/avatars/271132470_506892223917314_2788328017502867722_n_k8rny8.jpg"
               alt="Founder"
             />
             <Typography>Paril Sanghvi</Typography>
