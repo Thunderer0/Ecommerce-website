@@ -150,7 +150,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
     }
-    if (!req.body.avatar.url) {
+    if (!req.body.avatar==="undefined") {
         return next(new ErrorHandler("Please upload a avatar",401))
     }
     if (req.body.avatar !== "") {
